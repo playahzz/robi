@@ -1,26 +1,26 @@
  
 window.requestAnimationFrame =
 window.__requestAnimationFrame ||
-window.requestAnimationFrame ||
-window.webkitRequestAnimationFrame ||
-window.mozRequestAnimationFrame ||
-window.oRequestAnimationFrame ||
-window.msRequestAnimationFrame ||
-  (function () {
-  return function (callback, element) {
-  var lastTime = element.__lastTime;
-  if (lastTime === undefined) {
-  lastTime = 0; }
-  }
-  var currTime = Date.now();
-  var timeToCall = Math.max(1, 33 - (currTime - lastTime));
-  window.setTimeout(callback, timeToCall);
-  element.__lastTime = currTime + timeToCall;
-  };
-  })();
+    window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    (function () {
+        return function (callback, element) {
+            var lastTime = element.__lastTime;
+            if (lastTime === undefined) {
+                lastTime = 0;
+            }
+            var currTime = Date.now();
+            var timeToCall = Math.max(1, 33 - (currTime - lastTime));
+            window.setTimeout(callback, timeToCall);
+            element.__lastTime = currTime + timeToCall;
+        };
+    })();
 window.isDevice = 
 (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(((navigator.userAgent 
-|| navigator.vendor || window.opera)).toLowerCase()));
+    || navigator.vendor || window.opera)).toLowerCase()));
 var loaded = false;
 var init = function () {
 if (loaded) return;
@@ -38,9 +38,9 @@ ctx.fillRect(0, 0, width, height);
 var heartPosition = function (rad) {
     //return [Math.sin(rad), Math.cos(rad)];
     return [Math.pow(Math.sin(rad), 3), 
-    -(15 * Math.cos(rad) - 5 * 
-    Math.cos(2 * rad) - 2 * 
-    Math.cos(3 * rad) - Math.cos(4 * rad))];
+        -(15 * Math.cos(rad) - 5 * 
+        Math.cos(2 * rad) - 2 * 
+        Math.cos(3 * rad) - Math.cos(4 * rad))];
 };
 var scaleAndTranslate = function (pos, sx, sy, dx, dy) {
     return [dx + pos[0] * sx, dy + pos[1] * sy];
@@ -67,10 +67,10 @@ var heartPointsCount = pointsOrigin.length;
 
 var targetPoints = [];
 var pulse = function (kx, ky) {
-for (i = 0; i < pointsOrigin.length; i++) {
-    targetPoints[i] = [];
-    targetPoints[i][0] = kx * pointsOrigin[i][0] + width / 2;
-    targetPoints[i][1] = ky * pointsOrigin[i][1] + height / 2;
+    for (i = 0; i < pointsOrigin.length; i++) {
+        targetPoints[i] = [];
+        targetPoints[i][0] = kx * pointsOrigin[i][0] + width / 2;
+        targetPoints[i][1] = ky * pointsOrigin[i][1] + height / 2;
     }
 };
 
@@ -154,3 +154,4 @@ var s = document.readyState;
 if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
 else document.addEventListener('DOMContentLoaded', init, false);
 
+ 
